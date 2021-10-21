@@ -1,3 +1,5 @@
+"use strict"
+
 const teamMembers = [
     {
         name: "Wayne Barnett",
@@ -32,17 +34,50 @@ const teamMembers = [
 ];
 
 const cardContainer = document.getElementsByClassName("team-container");
-console.log(cardContainer);
+const btn = document.getElementById("addMemberButton");
+console.log(btn);
 
-for(let i=0; i < teamMembers.length; i++){
+DisplayTeamMembers()
+btn.addEventListener("click", AddTeamMember);
 
-    cardContainer[0].innerHTML += `<div class="team-card">
-                                        <div class="card-image">
-                                            <img src="img/${teamMembers[i].image}" alt="${teamMembers[i].name}"/>
-                                        </div>
-                                        <div class="card-text">
-                                            <h3>${teamMembers[i].name}</h3>
-                                            <p>${teamMembers[i].role}</p>
-                                        </div>
-                                    </div>`;
+
+
+function DisplayTeamMembers(){
+    for(let i=0; i < teamMembers.length; i++){
+        cardContainer[0].innerHTML += `<div class="team-card">
+                                            <div class="card-image">
+                                                <img src="img/${teamMembers[i].image}" alt="${teamMembers[i].name}"/>
+                                            </div>
+                                            <div class="card-text">
+                                                <h3>${teamMembers[i].name}</h3>
+                                                <p>${teamMembers[i].role}</p>
+                                            </div>
+                                        </div>`;
+    }
+
+}
+
+function AddTeamMember(){
+
+    console.log("Function AddTeamMemeber called");
+
+    const inputName = document.getElementById("name").value;
+    const inputRole = document.getElementById("role").value;
+    const inputImg = document.getElementById("image").value;
+
+    if(inputName == "" || inputRole == "" || inputImg == ""){
+        alert("Insert Correct Values");
+    } else{
+        const newTeamMemeber = {
+            name: inputName,
+            role: inputRole,
+            image: inputImg,
+        }
+        console.log("Console log di newTeamMemeber", newTeamMemeber);
+        teamMembers.push(newTeamMemeber);
+        console.log("Console log di teamMemebers after the push", teamMembers);
+    }
+    cardContainer[0].innerHTML = "";
+    DisplayTeamMembers();
+
 }
