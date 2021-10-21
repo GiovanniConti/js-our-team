@@ -35,7 +35,7 @@ const teamMembers = [
 
 const cardContainer = document.getElementsByClassName("team-container");
 const btn = document.getElementById("addMemberButton");
-console.log(btn);
+// console.log(btn);
 
 DisplayTeamMembers()
 btn.addEventListener("click", AddTeamMember);
@@ -59,7 +59,7 @@ function DisplayTeamMembers(){
 
 function AddTeamMember(){
 
-    console.log("Function AddTeamMemeber called");
+    // console.log("Function AddTeamMemeber called");
 
     const inputName = document.getElementById("name").value;
     const inputRole = document.getElementById("role").value;
@@ -73,9 +73,9 @@ function AddTeamMember(){
             role: inputRole,
             image: inputImg,
         }
-        console.log("Console log di newTeamMemeber", newTeamMemeber);
+        // console.log("Console log di newTeamMemeber", newTeamMemeber);
         teamMembers.push(newTeamMemeber);
-        console.log("Console log di teamMemebers after the push", teamMembers);
+        // console.log("Console log di teamMemebers after the push", teamMembers);
     }
     cardContainer[0].innerHTML = "";
     DisplayTeamMembers();
