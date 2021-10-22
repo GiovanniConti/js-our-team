@@ -44,17 +44,21 @@ btn.addEventListener("click", AddTeamMember);
 
 function DisplayTeamMembers(){
     for(let i=0; i < teamMembers.length; i++){
-        cardContainer[0].innerHTML += ` <div class="team-card">
-                                            <div class="card-image">
-                                                <img src="${FormatImgPath(teamMembers[i].image)}" alt="${teamMembers[i].name}"/>
-                                            </div>
-                                            <div class="card-text">
-                                                <h3>${teamMembers[i].name}</h3>
-                                                <p>${teamMembers[i].role}</p>
-                                            </div>
-                                        </div>`;
+        CardElementGenerator(i);       
     }
 
+}
+
+function CardElementGenerator(j){
+    cardContainer[0].innerHTML += ` <div class="team-card">
+                                            <div class="card-image">
+                                                <img src="${FormatImgPath(teamMembers[j].image)}" alt="${teamMembers[j].name}"/>
+                                            </div>
+                                            <div class="card-text">
+                                                <h3>${teamMembers[j].name}</h3>
+                                                <p>${teamMembers[j].role}</p>
+                                            </div>
+                                        </div>`;
 }
 
 function AddTeamMember(){
@@ -77,9 +81,9 @@ function AddTeamMember(){
         teamMembers.push(newTeamMemeber);
         // console.log("Console log di teamMemebers after the push", teamMembers);
     }
-    cardContainer[0].innerHTML = "";
-    DisplayTeamMembers();
-
+    // cardContainer[0].innerHTML = "";
+    CardElementGenerator(teamMembers.length - 1);
+    ResetInputFields(inputName, inputRole, inputImg)
 }
 
 function FormatImgPath(image){
@@ -88,3 +92,10 @@ function FormatImgPath(image){
     }
     return "img/" + image;
 }
+
+function ResetInputFields(nameField, roleField, imgField){
+    console.log("called ResetInputFields function")
+    nameField = "";
+    roleField = "";
+    imgField = "";
+};
