@@ -44,9 +44,9 @@ btn.addEventListener("click", AddTeamMember);
 
 function DisplayTeamMembers(){
     for(let i=0; i < teamMembers.length; i++){
-        cardContainer[0].innerHTML += `<div class="team-card">
+        cardContainer[0].innerHTML += ` <div class="team-card">
                                             <div class="card-image">
-                                                <img src="img/${teamMembers[i].image}" alt="${teamMembers[i].name}"/>
+                                                <img src="${FormatImgPath(teamMembers[i].image)}" alt="${teamMembers[i].name}"/>
                                             </div>
                                             <div class="card-text">
                                                 <h3>${teamMembers[i].name}</h3>
@@ -80,4 +80,11 @@ function AddTeamMember(){
     cardContainer[0].innerHTML = "";
     DisplayTeamMembers();
 
+}
+
+function FormatImgPath(image){
+    if(image.startsWith("http")){
+        return image;
+    }
+    return "img/" + image;
 }
